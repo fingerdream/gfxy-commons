@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common::html" >
+</head>
+<body style="width: 99%;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <div class="panel-body" id="panel-body-table">
+                    <div id="toolbar" class="clearfix">
+<!--                        <button id="addData" class="btn btn-primary" >-->
+<!--                            <span>新增</span>-->
+<!--                            <i class="fa fa-plus"></i>-->
+<!--                        </button>-->
+<!--                        <button id="updateData" class="btn btn-primary">-->
+
+<!--                            <span>修改</span>-->
+<!--                            <i class="fa fa-edit"></i>-->
+<!--                        </button>-->
+<!--                        <button id="delData" class="btn btn-primary" >-->
+
+<!--                            <span>删除</span>-->
+<!--                            <i class="fa fa-minus"></i>-->
+<!--                        </button>-->
+<!--                        <button id="roleMenu" class="btn btn-primary" >-->
+
+<!--                            <span>角色菜单赋权</span>-->
+<!--                            <i class="fa fa-user-md"></i>-->
+<!--                        </button>-->
+
+                        <button id="addData" class="btn btn-primary" th:if="${_btnAuth eq 'all' or _btnMap['addData'] eq 1}" >
+                            <span th:if="${not #strings.isEmpty(_btnMap['addData__name'])}" th:text="${_btnMap['addData__name']}"></span>
+                            <span th:if="${#strings.isEmpty(_btnMap['addData__name'])}" th:text="新增"></span>
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button id="updateData" class="btn btn-primary" th:if="${_btnAuth eq 'all' or _btnMap['updateData'] eq 1}" >
+                            <span th:if="${not #strings.isEmpty(_btnMap['updateData__name'])}" th:text="${_btnMap['updateData__name']}"></span>
+                            <span th:if="${#strings.isEmpty(_btnMap['updateData__name'])}" th:text="修改"></span>
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button id="delData" class="btn btn-primary" th:if="${_btnAuth eq 'all' or _btnMap['delData'] eq 1}" >
+                            <span th:if="${not #strings.isEmpty(_btnMap['delData__name'])}" th:text="${_btnMap['delData__name']}"></span>
+                            <span th:if="${#strings.isEmpty(_btnMap['delData__name'])}" th:text="删除"></span>
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button id="roleMenu" class="btn btn-primary" th:if="${_btnAuth eq 'all' or _btnMap['roleMenu'] eq 1}" >
+                            <span th:if="${not #strings.isEmpty(_btnMap['roleMenu__name'])}" th:text="${_btnMap['roleMenu__name']}"></span>
+                            <span th:if="${#strings.isEmpty(_btnMap['roleMenu__name'])}" th:text="角色菜单赋权"></span>
+                            <i class="fa fa-user-md"></i>
+                        </button>
+                    </div>
+                    <table id="roleTable"></table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    let systemArr = [[${systemArr}]];
+</script>
+<script th:inline="javascript" th:src="@{/base/system/roleInfo.js}"></script>
+</body>
+</html>

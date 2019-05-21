@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientConfig>
+
+	<!-- 探测服务器是否存在 -->
+	<queryStateEnable>true</queryStateEnable>
+	<!-- 是否存在备用服务器 -->
+	<hasbak>false</hasbak>
+	<!-- 巡检时间 单位 毫秒 -->
+	<switchcycletime>60000</switchcycletime>
+	<!-- 服务器登陆页面地址 -->
+	<loginUrl>page/index.jsp</loginUrl>
+	<!-- 服务器登陆页面地址 -->
+	<agentSsoUrl>simulation.do</agentSsoUrl>
+	<!-- 和服务器通信类
+		 可配com.ultrapower.casp.common.rpc.socket.client.SendAndReceive和com.ultrapower.casp.common.rpc.nio.client.SendAndReceive
+		 使用socket通讯端口时，配置com.ultrapower.casp.common.rpc.socket.client.SendAndReceive
+	      使用nio通讯端口时，配置com.ultrapower.casp.common.rpc.nio.client.SendAndReceive
+	 -->
+	<rpcClass>com.ultrapower.casp.common.rpc.nio.client.SendAndReceive</rpcClass>
+	<!-- 传输数据格式编码 11、12、13、14、 41 -->
+	<dataFormatMode>41</dataFormatMode>
+	<!-- 加密算法 1 -->
+	<encodeType>1</encodeType>
+
+	<server>
+		<!-- 服务器ID -->
+		<id>master</id>
+		<!-- 服务器IP -->
+		<ip>192.168.170.58</ip>
+		<!-- 服务器对外提供认证服务端口。可配20001和20011,20001为socket通讯端口，20011为nio通讯端口 -->
+		<port>20011</port>
+		<!-- 服务器对外提供状态探测端口。可配20000和20010,20000为socket通讯端口，20010为nio通讯端口 -->
+		<probePort>20010</probePort>
+		<!-- 服务器对外WEB服务端口，web服务器端口 -->
+		<webServerPort>8080</webServerPort>
+		<!-- 是否为主服务器 -->
+		<isMaster>true</isMaster>
+		<!-- 状态探测返回值 -->
+		<returnValue>serverisok</returnValue>
+		<!-- 超时时间 单位 毫秒 -->
+		<timeOut>3000</timeOut>
+		<!-- 状态探测类名
+			 可配com.ultrapower.casp.client.serverstate.CaspStateSocketDriver和com.ultrapower.casp.client.serverstate.nio.CaspStateNioDriver
+			 使用socket通讯端口时，配置com.ultrapower.casp.client.serverstate.CaspStateSocketDriver
+			 使用nio通讯端口时，配置com.ultrapower.casp.client.serverstate.nio.CaspStateNioDriver
+		 -->
+		<queryStateClass>com.ultrapower.casp.client.serverstate.nio.CaspStateNioDriver</queryStateClass>
+		<!-- 应用上下文 -->
+		<appContext>casp</appContext>
+		<!-- 访问方式http/https -->
+		<scheme>http</scheme>
+	</server>
+
+</clientConfig>

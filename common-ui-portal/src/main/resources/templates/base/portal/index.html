@@ -1,0 +1,234 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>陕西国防工业职业技术学院教师评价系统</title>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/bootstrap.min.css}" href="/static/js/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/font-awesome.min.css}" href="/static/js/bootstrap/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/plugs/select2/css/select2.min.css}" href="/static/js/bootstrap/plugs/select2/css/select2.min.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" href="/static/css/index.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/skins/_all-skins.css}" href="/static/css/skins/_all-skins.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/plugs/dialog/css/bootstrap-dialog.min.css}" href="/static/js/bootstrap/plugs/dialog/css/bootstrap-dialog.min.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/jquery/loading/loading.css}" href="/static/js/jquery/loading/loading.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/plugs/validator/css/bootstrapValidator.min.css}" href="/static/js/bootstrap/plugs/validator/css/bootstrapValidator.min.css">
+        <style>
+            .dashboard-stats {
+                float: left;
+                width: 20%;
+            }
+
+            .dashboard-stats-item {
+                position: relative;
+                overflow: hidden;
+                color: #fff;
+                cursor: pointer;
+                height: 85px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                padding-left: 15px;
+                padding-top: 20px;
+            }
+
+            .dashboard-stats-item .m-top-none {
+                margin-top: 5px;
+            }
+
+            .dashboard-stats-item h2 {
+                font-size: 28px;
+                font-family: inherit;
+                line-height: 1.1;
+                font-weight: 500;
+                padding-left: 50px;
+            }
+
+            .dashboard-stats-item h2 span {
+                font-size: 10px;
+                padding-left: 5px;
+            }
+
+            .dashboard-stats-item h5 {
+                font-size: 12px;
+                font-family: inherit;
+                margin-top: 1px;
+                line-height: 1.1;
+                padding-left: 70px;
+            }
+
+
+            .dashboard-stats-item .stat-icon {
+                position: absolute;
+                top: 18px;
+                font-size: 50px;
+                opacity: .3;
+            }
+
+            .dashboard-stats i.fa.stats-icon {
+                width: 50px;
+                padding: 20px;
+                font-size: 50px;
+                text-align: center;
+                color: #fff;
+                height: 50px;
+                border-radius: 10px;
+            }
+            .navbar-common-menu{
+                float: left;
+                margin-top: 0px;
+                cursor:pointer;
+            }
+            .top-nav-ul{
+                margin:0 auto;
+                overflow: hidden;
+                text-align:center;
+            }
+            .top-nav-ul li{
+                float:left;
+            }
+            .not-first-li{
+                padding-left:20px;
+            }
+            .top-nav-ul li img{
+                display:block;
+                width:40px;
+                height:40px;
+                margin-right: auto;
+                margin-top:-10px;
+            }
+            .top-nav-ul li span{
+                padding-top:8px;
+                font-size:15px;
+                display: block;
+                height:10px;
+                line-height: 10px;
+                text-align: center;
+            }
+
+            .span-font{
+                font-weight:bold;
+            }
+            .select2{
+                color: #fff;
+                background-color: #4f5c65;
+            }
+        </style>
+    </head>
+
+    <body id="indexBody" class="hold-transition skin-blue sidebar-mini" style="overflow:hidden;">
+    <div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
+        <img src="static/base/img/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+    </div>
+    <div class="wrapper">
+        <!--头部信息-->
+        <header class="main-header">
+            <a href="#" target="_blank" class="logo" style="height: 70px;">
+                <span id="logo-mini" class="logo-mini"></span>
+                <span id="logo-lg" class="logo-lg"></span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a class="sidebar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-common-menu">
+                    <ul class="nav navbar-nav top-nav-ul" id="portalMenu">
+                    </ul>
+                </div>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li id="sys-name">
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="base/img/defaultUser.png" class="user-image" id="topMyLogo" alt="User Image">
+                                <span class="hidden-xs" id="topUserName">欢迎您</span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li id="topMenu/index/getMemuTreeData" style="cursor: pointer;"><a class="menuItem" onclick="changeSkin()"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>
+                                <li id="userInfo" style="cursor: pointer;"><a class="menuItem" onclick="userInfo()"><i class="fa fa-user"></i>个人信息</a></li>
+                                <li id="userPwd" style="cursor: pointer;"><a class="menuItem" onclick="userPwd()"><i class="fa fa-lock"></i>修改密码</a></li>
+                                <li style="display:none"><a class="menuItem" id="openTab" data-id="openTab" href="">打开页面</a></li>
+                                <li class="divider"></li>
+                                <li><a id="logoutId" href="#"><i class="ace-icon fa fa-power-off"></i>安全退出</a></li>
+                                <li id="aboutMe" style="cursor: pointer;"><a class="menuItem" onclick="aboutSys()"><i class="fa fa-copyright"></i>关于系统</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--左边导航-->
+        <div class="main-sidebar">
+            <div class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                    </div>
+                </div>
+                <ul class="sidebar-menu" id="sidebar-menu">
+                </ul>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div id="content-wrapper" class="content-wrapper">
+            <div class="content-tabs">
+                <button class="roll-nav roll-left tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs menuTabs">
+                    <div class="page-tabs-content" style="margin-left: 0px;">
+                        <a href="javascript:;" data-toggle="dropdown" class="menuTab dropdown-toggle active" data-id="index/indexPage.do">
+                            欢迎首页<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="width: 150px">
+                            <li role="presentation" th:each="system : ${systemIdList}" style="height: 25px;width: 150px">
+                                <a role="menuitem" style="height: 25px;line-height: 25px;width: 150px;text-align: center" class="tabIndex" th:attr="tabindex=${system.id}" href="javascript:void();" th:text="${system.label}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right tabRight">
+                    <i class="fa fa-forward" style="margin-left: 3px;"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown tabClose" data-toggle="dropdown">
+                        页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="tabHelp" href="javascript:void();">查看帮助</a></li>
+                        <li><a class="tabReload" href="javascript:void();">刷新当前</a></li>
+                        <li><a class="tabCloseCurrent" href="javascript:void();">关闭当前</a></li>
+                        <li><a class="tabCloseAll" href="javascript:void();">全部关闭</a></li>
+                        <li><a class="tabCloseOther" href="javascript:void();">关闭其它全部</a></li>
+                    </ul>
+                </div>
+                <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
+            </div>
+            <div class="content-iframe" style="overflow: hidden;">
+                <div class="mainContent" id="content-main" style="margin: 10px; margin-bottom: 0px; padding: 0;">
+                    <iframe id="indexNcmcPage" class="LRADMS_iframe" width="100%" height="100%" src="" frameborder="0" data-id="index/indexPage.do"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Javascript -->
+        <script th:inline="javascript">
+            let basePath = /*[[@{/}]]*/ '';
+        </script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}" src="/static/js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/js/bootstrap.min.js}" src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/json2.js}" src="/static/js/jquery/json2.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.cookie.js}" src="/static/js/jquery/jquery.cookie.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/plugs/dialog/js/bootstrap-dialog.min.js}" src="/static/js/bootstrap/plugs/dialog/js/bootstrap-dialog.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/loading/loading.js}" src="/static/js/jquery/loading/loading.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/loading/jquery-ui-jqLoding.js}" src="/static/js/jquery/loading/jquery-ui-jqLoding.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.noty.packaged.min.js}" src="/static/js/jquery/jquery.noty.packaged.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/md5.js}" src="/static/js/jquery/md5.js"></script>
+        <script type="text/javascript" th:src="@{/base/js/jsencrypt.js}" src="/static/base/js/jsencrypt.js"></script>
+        <script type="text/javascript" th:src="@{/base/portal/index.js}" src="/static/base/portal/index.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/plugs/select2/js/select2.min.js}" src="/static/js/bootstrap/plugs/select2/js/select2.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/plugs/select2/js/zh-CN.js}" src="/static/js/bootstrap/plugs/select2/js/zh-CN.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/plugs/validator/js/bootstrapValidator.min.js}" src="/static/js/bootstrap/plugs/validator/js/bootstrapValidator.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap/plugs/validator/js/zh_CN.js}" src="/static/js/bootstrap/plugs/validator/js/zh_CN.js"></script>
+    </body>
+</html>

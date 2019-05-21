@@ -1,0 +1,269 @@
+/*iConfig的左侧树显示*/
+.left-sidebar {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.left-sidebar.minified {
+  width: 3%;
+  margin-right: 0px;
+  z-index: 9;
+}
+.left-sidebar.minified .main-menu > li {
+  position: relative;
+}
+.left-sidebar.minified .main-menu > li .fa {
+  width: 40px;
+}
+.left-sidebar.minified .main-menu > li .toggle-icon {
+  display: none;
+}
+.left-sidebar.minified .main-menu > li > a {
+  padding-left: 0;
+}
+.left-sidebar.minified .main-menu > li > a > .text {
+  position: absolute;
+  display: none;
+}
+.left-sidebar.minified .main-menu > li:hover > a > .text {
+  position: absolute;
+  display: block;
+  left: 40px;
+  top: 0;
+  min-width: 200px;
+  z-index: 9999;
+  padding: 10px;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+  background: #ccc;
+  font-weight: 700;
+}
+.left-sidebar.minified .main-menu > li:hover > ul.sub-menu {
+  display: block !important;
+  min-width: 200px;
+  position: absolute;
+  margin-left: 40px;
+  z-index: 9999;
+  border: 1px solid #E4E4E4;
+  border-top: none;
+}
+.left-sidebar.minified .main-menu > li:hover > ul.sub-menu > li > a {
+  padding-left: 10px;
+}
+
+.sidebar-minified {
+  text-align: center;
+  position: relative;
+  margin-bottom: 15px;
+}
+.sidebar-minified:before {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  content: "";
+  height: 0;
+  border-top: 1px solid #c4c4c4;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 13px;
+}
+.sidebar-minified .fa {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  border: 1px solid #A2A2A2;
+  color: #A2A2A2;
+  padding: 4px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.sidebar-minified .fa:hover {
+  background-color: #f6f6f6;
+}
+
+.content-wrapper {
+	border:none;
+}
+.content-wrapper.expanded {
+    width: 97%;
+}
+
+.content-wrapper .content{
+	border:none;
+}
+
+.main-nav {
+  padding-left: 0;
+  width:100%;
+  border-right:2px solid #c4c4c4;
+}
+.main-nav-right {
+    padding-left: 0;
+    width:100%;
+    border-left:2px solid #c4c4c4;
+}
+.main-form {
+  padding-left: 0;
+  width:100%;
+}
+.main-content{
+  padding-left: 0;
+  width:100%;
+}
+
+.clearfix{
+	margin-bottom:10px;
+}
+
+.forminput-padding{
+	padding-top:7px
+}
+
+/*左对齐标签页*/
+.custom-tabs-left {
+  border-bottom: none;
+}
+.custom-tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ccc;
+  border-bottom: none;
+}
+.custom-tabs-left > .nav-tabs > li {
+  float: none;
+}
+.custom-tabs-left > .nav-tabs > li a {
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  min-width: 74px;
+  margin-right: -1px;
+  padding: 10px 40px 10px 10px;
+}
+.custom-tabs-left > .custom-tabs-left > .nav-tabs > li a:focus {
+  background: transparent;
+  border-color: transparent;
+}
+.custom-tabs-left > .nav-tabs > li a:hover, .nav-tabs .active a, .custom-tabs-left > .nav-tabs .active a:hover, .custom-tabs-left > .nav-tabs .active a:focus {
+  border: 1px solid #ccc;
+  border-right-color: #fff;
+}
+.custom-tabs-left .tab-content {
+  padding-top: 5px;
+}
+
+
+.badge-success{
+    background-color: #00ca6d;
+}
+.badge-important{
+    background-color: #ac2925;
+}
+.badge-warning{
+    background-color: #cad96c;
+}
+
+/*多级下拉组件*/
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    width:270px;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-submenu > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-submenu:hover > a:after {
+    border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+/*多级下拉组件*/
+.dropdown-sonmenu {
+    position: relative;
+}
+.dropdown-sonmenu > .dropdown-menu {
+    top: 0;
+    width:170px;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-sonmenu:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-sonmenu > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-sonmenu:hover > a:after {
+    border-left-color: #fff;
+}
+.dropdown-sonmenu.pull-left {
+    float: none;
+}
+.dropdown-sonmenu.pull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gfxy.common.portal.dao.CommonMapper">
+
+
+
+    <select id="selectDataByRoleId" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT
+            ID,
+            IS_LEAF   ISLEAF,
+            PARENT_ID PARENTID,
+            LABEL,
+            CASE (SELECT COUNT(*)
+                  FROM ROLE_RESOURCES M
+                  WHERE M.RESOURCE_ID = T.ID AND M.ROLE_ID
+                                                 = #{roleId} AND M.TYPE = 0)
+            WHEN 0
+                THEN
+                    'FALSE'
+            ELSE
+                'TRUE'
+            END       CHECKED,
+            ORDER_NUM
+        FROM APP_TREE T
+        WHERE ID IN ('-1'  ${systemIdStr})
+        UNION
+        SELECT
+            ID,
+            IS_LEAF   ISLEAF,
+            PARENT_ID PARENTID,
+            LABEL,
+            CASE (SELECT COUNT(*)
+                  FROM ROLE_RESOURCES M
+                  WHERE M.RESOURCE_ID = T.ID AND M.ROLE_ID
+                                                 = #{roleId} AND M.TYPE = 0)
+            WHEN 0
+                THEN
+                    'FALSE'
+            ELSE
+                'TRUE'
+            END       CHECKED,
+            ORDER_NUM
+        FROM APP_TREE T
+        where T.ID not in ('-1'  ${systemIdStr})
+        ORDER BY PARENTID ASC, ORDER_NUM ASC
+    </select>
+
+
+</mapper>

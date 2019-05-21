@@ -1,0 +1,16 @@
+.fixed-table-container tbody .selected td {
+    background-color:#437890
+}
+
+
+.ztree li a{
+    color:#2ee54f
+}
+
+.ztree li a.curSelectedNode{
+    color:#2ee54f
+}
+
+.ztree li span.button{
+    background-image: url("metro_green.png");
+}

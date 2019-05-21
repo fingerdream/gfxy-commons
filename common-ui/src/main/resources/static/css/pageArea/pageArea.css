@@ -1,0 +1,45 @@
+.panel-default {
+	border: none;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.panel-default>.panel-heading {
+	color: #777;
+	background-color: #fff;
+	border-color: #e6e6e6;
+	padding: 10px 10px;
+	width:100%;
+}
+
+.panel-heading>.panel-rightMenu{
+	margin-top:-7px;
+	float:right;
+}
+
+.panel-default>.panel-body {
+	padding: 10px;
+	padding-bottom: 0px;
+}
+
+.panel-default>.panel-body ul {
+	overflow: hidden;
+	padding: 0;
+	margin: 0px;
+	margin-top: -5px;
+}
+
+.panel-default>.panel-body ul li {
+	line-height: 27px;
+	list-style-type: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.panel-default>.panel-body ul li .time {
+	color: #a1a1a1;
+	float: right;
+	padding-right: 5px;
+}

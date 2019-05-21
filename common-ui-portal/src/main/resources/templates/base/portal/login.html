@@ -1,0 +1,81 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>用户登录</title>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/bootstrap.min.css}" href="/static/js/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/font-awesome.min.css}" href="/static/js/bootstrap/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/form-elements.css}" href="/static/css/form-elements.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="/static/css/style.css">
+    </head>
+
+    <body>
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h2>用户登录</h2>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-key"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" name="loginUser" id="loginUser" method="post" onsubmit="return checkForm()" class="login-form">
+			                    	<div class="input-group input-group-lg">
+			                    		<label class="sr-only" for="username">登录名</label>
+										<span class="input-group-addon" style="border-radius:5px;"><i class="glyphicon glyphicon-user"></i></span>
+			                        	<input type="text" style="border-radius:5px;" name="username" placeholder="请输入登录名" class="form-username form-control" id="username">
+			                        </div>
+			                        <div class="input-group input-group-lg">
+			                        	<label class="sr-only" for="password">密码</label>
+										<span class="input-group-addon" style="border-radius:5px;"><i class="glyphicon glyphicon-lock"></i></span>
+			                        	<input type="password" style="border-radius:5px;" name="password" placeholder="请输入密码" class="form-password form-control" id="password">
+			                        </div>
+                                    <div class="input-group input-group-lg">
+                                        <label class="sr-only" for="password">验证码</label>
+                                        <span class="input-group-addon" style="border-radius:5px;"><i class="glyphicon glyphicon-copyright-mark"></i></span>
+                                        <input type="text" style="border-radius:5px;width: 320px;" name="checkCode" placeholder="请输入验证码" class="form-checkCode form-control" id="checkCode">
+                                        <img id="code" style="width: 120px;margin-top:6px;margin-left:8px;font-size:25px;cursor: pointer;"/>
+                                    </div>
+			                        <button type="submit" id="loginBtn" class="btn" style="text-shadow: black 5px 3px 3px;font-size:22px">
+                                        <span id='loginText'>登录</span><i id="loginIcon"></i>
+                                    </button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1 social-login">
+                        	<h5>地址：西安市鄠邑区人民路8号  邮编：710300 </h5>
+                        	<h5>电话：</h5>
+                        	<h5>Copyright © 陕西国防工业职业技术学院 版权所有 陕ICP备06002608号 </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script th:inline="javascript">
+            let basePath = /*[[@{/}]]*/ '';
+        </script>
+		<script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}" src="/static/js/jquery/jquery.min.js"></script>
+    	<script type="text/javascript" th:src="@{/js/bootstrap/js/bootstrap.min.js}" src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.backstretch.min.js}" src="/static/js/jquery/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.noty.packaged.min.js}" src="/static/js/jquery/jquery.noty.packaged.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery/jquery.cookie.js}" src="/static/js/jquery/jquery.cookie.js"></script>
+        <script type="text/javascript" th:src="@{/base/js/jsencrypt.js}" src="/static/base/js/jsencrypt.js"></script>
+		<script type="text/javascript" th:src="@{/base/js/login.js}" src="/static/base/js/login.js"></script>
+    </body>
+</html>

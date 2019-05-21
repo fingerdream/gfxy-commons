@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/bootstrap.min.css}"
+          href="/static/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap/css/font-awesome.min.css}"
+          href="/static/js/bootstrap/css/font-awesome.min.css">
+    <style>
+        .lastClass {
+            margin-right: 0.5%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
+    <img th:src="@{/static/base/img/ajax-loader.gif}" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+</div>
+<div id="areascontent">
+    <div th:each="rowInfo,rowInfoStatus : ${layoutRowInfoList}" class="rows"
+         style="margin-bottom: 0.2%; overflow: hidden;">
+        <div th:each="areaInfo,areaInfoStatus : ${rowInfo.layoutAreaInfo}"
+             th:class="${areaInfoStatus.last}? '':'lastClass'"
+             th:style="'width:'+${areaInfo.areaWidth}+';float: left;'">
+            <iframe th:id="${areaInfo.areaId}" th:name="${areaInfo.areaId}" th:src="'/iPortal/' + ${areaInfo.areaUrl}"
+                    scrolling="no"
+                    frameborder="0" style="width:100%;" th:height="${areaInfo.areaHeigth}"></iframe>
+        </div>
+    </div>
+</div>
+<!-- Javascript -->
+
+<script th:inline="javascript">
+    let basePath = /*[[@{/}]]*/ '';
+</script>
+<script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}"
+        src="/static/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap/js/bootstrap.min.js}"
+        src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/jquery/json2.js}" src="/static/js/jquery/json2.js"></script>
+
+<script th:inline="javascript">
+    $(window).on('load',function(){
+        window.setTimeout(function() {
+            $('#ajax-loader').fadeOut();
+        }, 300);
+    });
+</script>
+</body>
+</html>

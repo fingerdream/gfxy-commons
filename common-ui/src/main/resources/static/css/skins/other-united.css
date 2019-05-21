@@ -1,0 +1,11 @@
+.fixed-table-container tbody .selected td {
+    background-color:#f9bfbf
+}
+
+.ztree li a{
+    color:#ef3030
+}
+
+.ztree li a.curSelectedNode{
+    color:#ef3030
+}

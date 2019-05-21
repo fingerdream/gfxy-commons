@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>展示markdown</title>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" th:href="@{/js/jquery/strapdown/strapdown.css}" href="/static/js/jquery/strapdown/strapdown.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/js/jquery/strapdown/themes/cerulean.min.css}" href="/static/js/jquery/strapdown/themes/cerulean.min.css">
+    </head>
+
+    <body>
+        <div id="mdcontent"></div>
+		<script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}" src="/static/js/jquery/jquery.min.js"></script>
+    	<script type="text/javascript" th:src="@{/js/jquery/strapdown/strapdown.js}" src="/static/js/jquery/strapdown/strapdown.js"></script>
+        <script th:inline="javascript">
+            let basePath = /*[[@{/}]]*/ '';
+            let mdName = [[${mdName}]];
+            $.ajax({
+                url: basePath+'markdown/'+mdName+'.md',
+                type: "GET",
+                dataType: "text",
+                success: function (data) {
+                    markdownFromText(data, "mdcontent");
+                }
+            });
+        </script>
+    </body>
+</html>

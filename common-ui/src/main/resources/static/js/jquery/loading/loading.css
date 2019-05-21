@@ -1,0 +1,41 @@
+/*全屏背景遮罩层*/
+.loadingPage_bg1 {
+	background:none repeat scroll 0 0 #000;
+	height:100%;
+	left:0; /*:rgba(0,0,0,0.5);*/
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	width:100%;
+	position:absolute;
+	top:0px;
+	z-index:110;
+}
+/*局部背景遮罩*/
+.loadingPage_bg {
+	background:none repeat scroll 0 0 #fff;
+	height:100%;
+	left:0; /*:rgba(0,0,0,0.5);*/
+	opacity:1;
+	filter:alpha(opacity=100);
+	width:100%;
+	z-index:110;
+}
+
+#loadingPage {
+	display:block;
+	font-weight:bold;
+	font-size:12px;
+	color:#595959;
+	height:48px;
+	left:50%;
+	line-height:27px;
+	margin-left:-74px;
+	margin-top:-14px;
+	padding:10px 10px 10px 50px;
+	position:absolute;
+	text-align:left;
+	top:50%;
+	z-index:111;
+	background:url(loading.gif) no-repeat scroll 12px center #FFFFFF;
+	border:2px solid #86A5AD;
+}
